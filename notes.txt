@@ -1,3 +1,10 @@
 Backend :
 1. dependencies :
     express mongoose dotenv jsonwwebtoken bcryptjs cookie-parse cloudinary socket.io
+    nodemon as devdependency
+    run server on port 500
+    change type to module
+    create folders controlers , lib , middelewear,models,routes
+
+    routes->auth.routes.js
+    database connection and .env use
