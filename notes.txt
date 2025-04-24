@@ -1,0 +1,3 @@
+Backend :
+1. dependencies :
+    express mongoose dotenv jsonwwebtoken bcryptjs cookie-parse cloudinary socket.io
