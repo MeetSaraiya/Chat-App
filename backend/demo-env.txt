@@ -1,0 +1,4 @@
+//create file named .env
+//add below data
+PORT = 5001
+MONGO_URI= 
