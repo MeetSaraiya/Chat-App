@@ -2,3 +2,4 @@
 //add below data
 PORT = 5001
 MONGO_URI= 
+JWT_SECRET=
