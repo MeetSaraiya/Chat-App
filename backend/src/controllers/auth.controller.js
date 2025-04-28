@@ -2,6 +2,8 @@ import cloudinary from "../lib/cloudinary.js";
 import { generateToken } from "../lib/util.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import { config, configDotenv } from "dotenv";
+config()
 
 export const signup = async (req, res) => {
   console.log("request body````````````````````", req.body);
@@ -109,21 +111,22 @@ export const logout = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
+
     const { profilePic } = req.body;
     const userId = req.user._id;
 
     if (!profilePic) {
-      return res.status(404).json({ message: "updated image not available" })
+      return res.status(404).json({ message : "updated image not available" })
     }
 
     const uploaderResponse = await cloudinary.uploader.upload(profilePic);
-    const updateUser = await User.findByIdAndUpdate(userId, { profilePic: uploaderResponse.secure_url }, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(userId, { profilePic: uploaderResponse.secure_url }, { new: true });
 
-    return res.status(200).json(updateUser);
+    return res.status(200).json(updatedUser);
 
   } catch (error) {
-    console.log("Error in updateProfile controller", error.message);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.log("Error in updateProfile controller", error);
+    res.status(500).json({ message: "Update profile Error" ,error : error});
   }
 }
 
