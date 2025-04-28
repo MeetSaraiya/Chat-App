@@ -8,11 +8,15 @@ import LoginPage from "../pages/LoginPage.jsx";
 import SettingsPage from "../pages/SettingsPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
 import { useAuthStore } from "../store/authStore";
+import { useThemeStore } from "../store/useThemeStore";
 import { LoaderCircle } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
 function App() {
+
   const { authUser, isCheckingAuth } = useAuthStore();
+  const {theme} = useThemeStore();
+
   if (isCheckingAuth && !authUser)
     return (
       <div className="flex flex-column justify-center items-center h-screen">
@@ -22,6 +26,7 @@ function App() {
 
   return (
     <>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route
@@ -46,6 +51,7 @@ function App() {
         />
       </Routes>
       <Toaster/>
+    </div>
     </>
   );
 }
