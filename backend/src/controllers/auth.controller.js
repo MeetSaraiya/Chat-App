@@ -6,7 +6,7 @@ import { config, configDotenv } from "dotenv";
 config()
 
 export const signup = async (req, res) => {
-  console.log("request body````````````````````", req.body);
+
   const { fullName, email, password } = req.body;
 
   try {

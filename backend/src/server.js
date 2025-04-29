@@ -3,8 +3,8 @@ import {config} from "dotenv";
 import authRoute from "./routes/auth.routes.js";
 import { connectDb } from "./lib/db.js";
 import cookieParser from "cookie-parser";
-import cors from 'cors'
-
+import cors from 'cors';
+import messageRoutes from "./routes/message.routes.js"
 config();
 
 const app = express();
@@ -20,6 +20,7 @@ app.use(cors({
 }))
 
 app.use("/api/auth", authRoute);
+app.use("/api/messages", messageRoutes);
 
 try {
   app.listen(PORT, () => {
